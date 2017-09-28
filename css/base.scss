@@ -1,3 +1,14 @@
+$dark-blue: #000033;
+$dark-blue-tint1: rgba(11, 11, 64, 0.7);
+$dark-blue-tint1b: rgba(11, 11, 64, 0.95);
+$dark-blue-tint2: rgb(20, 20, 70);
+$dark-blue-tint3: rgb(13, 13, 51);
+$light-blue-tint1: rgb(188, 188, 204);
+$light-blue-tint2: rgb(115, 115, 136);
+$purple: #793f85;
+$blue: #0058b9;
+$red: #cf216a;
+$gold: #fdcb02;
 @import 'styles.css';
 .dashboard {
     height: 80%;
@@ -146,7 +157,7 @@
         text-align: left;
     }
     .header {}
-    .player-class {
+    .pink {
         color: $red;
     }
 }
@@ -169,14 +180,69 @@ body {
 }
 
 .popup {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 130px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 40px;
+    box-sizing: border-box;
     min-height: 200px;
-    background-color: $dark-blue-tint1;
+    background-color: $dark-blue-tint1b;
 }
 
-.tingle-demo {
-    display: none;
+.fa-times-circle {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: $light-blue-tint2;
+    font-size: 1.5em;
+}
+
+.playerbio {
+    h4 {
+        text-align: center;
+        margin-top: 0.5em;
+    }
+    h5 {
+        text-align: center;
+        color: $light-blue-tint2;
+        font-weight: 200;
+    }
+    .playerimg {
+        position: relative;
+        border-radius: 50%;
+        border: solid $light-blue-tint2;
+        width: 90px;
+        height: 90px;
+        margin: 0 auto;
+    }
+}
+
+.playerdetails {
+    table,
+    th,
+    td {
+        width: 50%;
+        font-size: 16px;
+        color: $light-blue-tint2;
+        text-align: left;
+    }
+    .pink {
+        color: $red;
+    }
+}
+
+.click:hover {
+    cursor: pointer;
 }
 
 #panel {
     display: none;
+}
+
+.pink {
+    color: $red;
 }
