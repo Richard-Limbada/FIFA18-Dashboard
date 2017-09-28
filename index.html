@@ -5,6 +5,7 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Sans:400,400i,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,200i,300,300i,400,400i,500,500i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--    <link href="css/tilteffect.css" rel="stylesheet" type="text/css">-->
     <!--<link href="css/jquery.fullPage.css" rel="stylesheet" type="text/css">-->
 
@@ -24,36 +25,126 @@
         <div class="section">
 
             <div class="popup dk-col-9" id="panel">
-                <div class="close" onclick="closePlayer()">BACK
-
+                <div class="close click" onclick="closePlayer()"><i class="closeX fa fa-times-circle" aria-hidden="true"></i>
                 </div>
 
-                <table>
+                <div class=" playerbio dk-col-4 left">
+                    <img class="playerimg" v-bind:src="current_player_url">
 
-                    <thead>
-                        <tr class="four columns header">
-                            <template v-for="value in tableHeader(tabledata)">
-                                            <th scope="col">{{ value }}</th>
-                            </template>
-                        </tr>
-                    </thead>
-                    <tbody class="tablebody">
+                    <h4 data-label="Name">{{ current_player_name }}</h4>
+                    <h5> Age: {{ current_player_age }} </h5>
+                </div>
 
-                        <tr class="four columns">
-                            <td data-label="Name">{{ current_player_name }}</td>
-                            <td data-label="Name">{{ current_player_name }}</td>
-                            <td data-label="Name">{{ current_player_name }}</td>
-                            <td data-label="Name">{{ current_player_name }}</td>
-                            <!--
-                                            <td data-label="Position">{{ value.Position }}</td>
-                                            <td data-label="Rating">{{ value.Rating }}</td>
-                                            <td data-label="Class" class="player-class">{{ value.Class }}</td>
--->
-                        </tr>
+                <table class="dk-col-4 right playerdetails">
 
 
-                    </tbody>
+
+
+                    <tr class="details">
+                        <th>Acceleration</th>
+                        <td class="pink">{{ current_player_acceleration }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Aggression </th>
+                        <td class="pink">{{ current_player_aggression }}</td>
+                    </tr>
+
+                    <tr class="details">
+                        <th> Agility </th>
+
+                        <td class="pink">{{ current_player_agility }}</td>
+                    </tr>
+
+                    <tr class="details">
+                        <th> Ballcontrol </th>
+
+                        <td class="pink">{{ current_player_ballcontrol }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Foot </th>
+
+                        <td class="pink">{{ current_player_foot }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Crossing </th>
+
+                        <td class="pink">{{ current_player_crossing }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Dribbling </th>
+
+                        <td class="pink">{{ current_player_dribbling }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Finishing </th>
+
+                        <td class="pink">{{ current_player_finishing }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Free kicks </th>
+
+                        <td class="pink">{{ current_player_freekickaccuracy }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Heading </th>
+
+                        <td class="pink">{{ current_player_headingaccuracy }}</td>
+                    </tr>
+
                 </table>
+
+
+                <table class="dk-col-4 right playerdetails">
+
+                    <tr class="details">
+                        <th> Long Shots </th>
+
+                        <td class="pink"> {{ current_player_longshots }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Penalties </th>
+
+                        <td class="pink">{{ current_player_penalties }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Short Passing </th>
+
+                        <td class="pink">{{ current_player_shortpassing }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Shot Power </th>
+
+                        <td class="pink">{{ current_player_shotpower }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Sprint Speed </th>
+
+                        <td class="pink">{{ current_player_sprintspeed }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Tackling </th>
+
+                        <td class="pink">{{ current_player_standingtackle }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Stamina </th>
+
+                        <td class="pink">{{ current_player_stamina }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Strength </th>
+
+                        <td class="pink">{{ current_player_strength }}</td>
+                    </tr>
+                    <tr class="details">
+                        <th> Vision </th>
+
+                        <td class="pink">{{ current_player_vision }}</td>
+                    </tr>
+
+                </table>
+
+
 
 
             </div>
@@ -103,13 +194,7 @@
                     </div>
 
                     <div class="dash-nav dk-col-2 left">
-                        <div class="nav-icon nav-icon-active">
-                            <a href="#">
-                                <svg id="players" class="svg-icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                                    <path d="M34.2 26.6L27.6 24c-1.2-.4-2.3-1.8-2.6-3 2.2-2 3.6-5 3.6-8.6C28.6 6.7 24.6 2 20 2s-8.6 4.7-8.6 10.4c0 4 2 7.5 4.6 9.2-.5 1-1.3 2-2.3 2.4L6 26.7c-2.5.8-4.4 3.4-4.4 6 0 2.7 2.2 5 5 5h27c2.6 0 4.8-2.2 4.8-5 0-2.5-2-5.2-4.2-6zM14 12.6c0-4.5 2.7-8 6-8s6 3.6 6 8c0 4.3-2.7 7.8-6 7.8s-6-3.6-6-8zm.5 13.8c1.7-.6 3-2 3.8-3.7l1.8.2c1 0 2-.3 3-.7.5 1.8 2 3.3 3.5 4-1.8 1-4 1.6-6.5 1.6-2.2 0-4.3-.6-6-1.4l.5-.2zm19 8.7h-27C5 35 4 34 4 32.8c0-1.5 1.2-3.2 2.7-3.7l4.2-1.4c2.3 1.7 5.5 2.7 9 2.7 3.6 0 7-1 9.3-3l4 1.6c1.4.4 2.7 2.2 2.7 3.7 0 1.4-1 2.4-2.5 2.4z" />
-                                </svg> PLAYERS
-                            </a>
-                        </div>
+
 
                         <div class="nav-icon">
                             <a href="#">
@@ -136,27 +221,48 @@
                             </a>
                         </div>
 
+                        <div class="nav-icon nav-icon-active">
+                            <a href="#">
+                                <svg id="players" class="svg-icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                                    <path d="M34.2 26.6L27.6 24c-1.2-.4-2.3-1.8-2.6-3 2.2-2 3.6-5 3.6-8.6C28.6 6.7 24.6 2 20 2s-8.6 4.7-8.6 10.4c0 4 2 7.5 4.6 9.2-.5 1-1.3 2-2.3 2.4L6 26.7c-2.5.8-4.4 3.4-4.4 6 0 2.7 2.2 5 5 5h27c2.6 0 4.8-2.2 4.8-5 0-2.5-2-5.2-4.2-6zM14 12.6c0-4.5 2.7-8 6-8s6 3.6 6 8c0 4.3-2.7 7.8-6 7.8s-6-3.6-6-8zm.5 13.8c1.7-.6 3-2 3.8-3.7l1.8.2c1 0 2-.3 3-.7.5 1.8 2 3.3 3.5 4-1.8 1-4 1.6-6.5 1.6-2.2 0-4.3-.6-6-1.4l.5-.2zm19 8.7h-27C5 35 4 34 4 32.8c0-1.5 1.2-3.2 2.7-3.7l4.2-1.4c2.3 1.7 5.5 2.7 9 2.7 3.6 0 7-1 9.3-3l4 1.6c1.4.4 2.7 2.2 2.7 3.7 0 1.4-1 2.4-2.5 2.4z" />
+                                </svg> PLAYERS
+                            </a>
+                        </div>
+
                     </div>
 
                     <div class="table-area dk-col-10 right">
                         <div class="table dk-col-10">
 
-                            <table>
+                            <table class="dk-col-12">
 
-                                <thead>
-                                    <tr class="four columns header">
-                                        <template v-for="value in tableHeader(tabledata)">
-                                            <th scope="col">{{ value }}</th>
-                                        </template>
+                                <thead class="dk-col-12">
+                                    <tr class=" dk-col-12">
+
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Position
+                                        </th>
+                                        <th>
+                                            Rating
+                                        </th>
+                                        <th>
+                                            Class
+                                        </th>
+                                        <th>
+                                        </th>
+
                                     </tr>
                                 </thead>
                                 <tbody class="tablebody">
-                                    <template v-for="value in tabledata">
-                                        <tr v-on:click="pullPlayer(tabledata,value.Name)" class="four columns" onclick="openPlayers()">
-                                            <td data-label="Name">{{ value.Name }}</td>
-                                            <td data-label="Position">{{ value.Position }}</td>
-                                            <td data-label="Rating">{{ value.Rating }}</td>
-                                            <td data-label="Class" class="player-class">{{ value.Class }}</td>
+                                    <template v-for="value in tableData2">
+                                        <tr v-on:click="pullPlayer(tableData2,value.name)" class="click" onclick="openPlayers()">
+                                            <td data-label="Name">{{ value.name }}</td>
+                                            <td data-label="Position">{{ value.positionFull }}</td>
+                                            <td data-label="Rating">{{ value.rating }}</td>
+                                            <td data-label="Class" class="pink">{{ value.playerType }}</td>
                                         </tr>
                                     </template>
 
@@ -211,7 +317,7 @@
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vue-meta@1.2.0/lib/vue-meta.js"></script>
     <script src="js/vendors/countUp.min.js.js"></script>
-    <script src="js/tableData.js"></script>
+    <script src="js/tableData2.js"></script>
     <script src="js/main.js"></script>
 
 
